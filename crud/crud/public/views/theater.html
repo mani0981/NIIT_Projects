@@ -1,0 +1,40 @@
+<div class="jumbotron text-center">
+    <h1>Adding Theater</h1>
+
+    <p>{{ tagline }}</p>
+
+    <div>
+        <center>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Seat</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+
+                        <td><input ng-model="theater.theaterName" /></td>
+                        <td><input ng-model="theater.theaterCity" /></td>
+                        <td><input ng-model="theater.theaterSeat" /></td>
+
+                        <td><button ng-click="addTheater(theater)" class="btn btn-primary">Add </button></td>
+
+                        <td><button ng-click="updateTheater(theater)" class="btn btn-primary">Update</button></td>
+
+                    </tr>
+                    <tr ng-repeat=" theater in theaterList">
+                        <td>{{theater.theaterName"}}</td>
+                        <td>{{heater.theaterCity"}}</td>
+                        <td>{{heater.theaterSeat"}}</td>
+                        <td><button ng-click="removeTheater(theater)" class="btn btn-danger">Remove</button></td>
+                        <td><button ng-click="editTheater(theater)" class="btn btn-primary">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
