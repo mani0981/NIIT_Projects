@@ -3,38 +3,40 @@
 
     <p>{{ tagline }}</p>
 
-    <div>
-        <center>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>City</th>
-                        <th>Seat</th>
+<div>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
+    <table cellpadding="10" cellspacing="5" width="100%">
+		  		<thead style="border-bottom: 1px solid #ccc;">
+		  		<tr>
+		  			<td><strong>Theater Name</strong></td>
+		  			<td><strong>City</strong></td>
+		  			<td><strong>No of Seat</strong></td>
+		  			<td><strong>Actions</strong></td>
+		  		</tr>
+		  		</thead>
+		  		<tbody>
+		  		<tr>
+		  			<td><input ng-model="theater.theaterName" /></td>
+		  			<td><input ng-model="theater.city" /></td>
+		  			<td><input ng-model="theater.seats" /></td>
+		  			<td>
+		  				<button ng-click="addTheater(theater)" class="btn btn-primary btn-sm">Add</button>
+		  				<button ng-click="updateTheater(theater)" class="btn btn-primary btn-sm">Update</button>
+		  			</td>
+		  		</tr>
+		  		<tr ng-repeat="theater in theaterList" style="border-top:1px solid #ccc">
+		  			<td>{{theater.theaterName}}</td>
+		  			<td>{{theater.city}}</td>
+		  			<td>{{theater.seats}}</td>
+		  			<td>
+		  				<button ng-click="editTheater(theater)" class="btn btn-primary btn-sm">Edit</button>
+		  				<button ng-click="removeTheater(theater)" class="btn btn-primary btn-sm">Delete</button>
+		  			</td>
+		  		</tr>
+		  		</tbody>
 
+		  </table>	
 
-                        <td><input ng-model="theater.theaterName" /></td>
-                        <td><input ng-model="theater.theaterCity" /></td>
-                        <td><input ng-model="theater.theaterSeat" /></td>
-
-                        <td><button ng-click="addTheater(theater)" class="btn btn-primary">Add </button></td>
-
-                        <td><button ng-click="updateTheater(theater)" class="btn btn-primary">Update</button></td>
-
-                    </tr>
-                    <tr ng-repeat=" theater in theaterList">
-                        <td>{{theater.theaterName"}}</td>
-                        <td>{{heater.theaterCity"}}</td>
-                        <td>{{heater.theaterSeat"}}</td>
-                        <td><button ng-click="removeTheater(theater)" class="btn btn-danger">Remove</button></td>
-                        <td><button ng-click="editTheater(theater)" class="btn btn-primary">Edit</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </center>
     </div>
+</div>
+

@@ -5,7 +5,8 @@ var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var movies = require('./app/movie-crud');
-var theater = require('./app/theater-crud');
+var theaters = require('./app/theater-crud');
+
 
 // configuration ===========================================
 	
@@ -13,13 +14,16 @@ var theater = require('./app/theater-crud');
 //var db = require('./config/db');
 app.use(bodyParser.json({})); // parse application/json 
 app.use('/movie', movies);
+app.use('/theater', theaters);
 
 
 
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var dbHost = 'mongodb://127.0.0.1/:27017/movies';
+
 mongoose.connect(dbHost);
+
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

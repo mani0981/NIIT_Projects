@@ -1,50 +1,68 @@
 angular.module('TheaterCtrl', []).controller('TheaterController', function($scope, $http) {
 
-    $scope.tagline = 'Add your theaters  here!';
-
-
-
-    var refresh = function() {
+	$scope.tagline = 'Add your Theater here!';
+    
+    	var refresh = function() {
         $http.get('/theater/getTheater').success(function(response) {
-            console.log('READ IS SUCCESSFUL');
+            console.log('add READ THEATERS IS SUCCESSFUL');
             $scope.theaterList = response;
-            $scope.theater = "";
+           $scope.theater = "";
         });
     };
-
-    refresh();
-
+   
+   refresh();
 $scope.addTheater = function(theater) {
-        
-    var theaterObj= {
-                     theaterName = $scope.theaterName ,
-                     theaterCity = this.theaterCity,
-                     theaterSeat = this.theaterSeat    
-                    }
+             
+            var theaterdb = {
+            	theaterName:theater.theaterName,
+            	city:theater.city,
+            	seats:theater.seats
+            };
            
+            $http.defaults.headers.post["Content-Type"] = "application/json";
 
             $http({
                     method: 'POST',
                     url: '/theater/addTheater',
-                     headers: {'Content-Type': 'application/json'},    
-                    data: theaterObj
+                    headers: {'Content-Type': 'application/json'},    
+                    data: theaterdb
                 })
                 .then(function(response) {
                     console.log(response);
                     console.log("CREATE IS SUCCESSFUL");
                     refresh();
                 });
+                refresh()    
 
-
-            // var serviceName = 'movi'
-            // $http.post('/movie/addMovie', movieObj).success(function(response) {
-            //     console.log(response);
-            //     console.log("CREATE IS SUCCESSFUL");
-            //     refresh();
-            // });
-
-        });
-        console.log($scope.contact);
-
+           
     };
-});
+ 
+
+    $scope.removeTheater = function(theater) {
+        
+        $http.delete('/theater/deleteTheater/' + theater._id).success(function(response) {
+            console.log(response);
+            console.log('DELETED SUCCESSFULLY');
+            refresh();
+        });
+    };
+
+    $scope.editTheater = function(theater) {
+    	console.log(theater);
+        $http.get('/theater/getTheater/' + theater._id).success(function(response) {
+            console.log(response[0]);
+            $scope.theater = response[0];
+            console.log("edit success")
+        });
+    };
+
+    $scope.updateTheater = function(theater) {
+        console.log("REACHED UPDATE");
+        console.log($scope.theater._id);
+        $http.put('/theater/updateTheater/' + $scope.theater._id, $scope.theater).success(function(response) {
+            console.log(response);
+            refresh();
+        })
+    }
+   
+ });
