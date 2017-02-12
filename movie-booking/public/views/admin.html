@@ -1,0 +1,255 @@
+<div class="jumbotron text-center">
+    <h1>Admin Booking</h1>
+    <p>{{ tagline }}</p>
+    <div>
+        <p>Add Movie</p>
+        <p>
+            <input type="text" id="movie" name="Movie" placeholder="Enter Movie Name" class="form-control" ng-model="movi.moviTitle"> </p>
+        <p>
+            <button ng-click="addMovie(movi)" class="btn btn-primary">Add </button>
+            <button ng-click="updateMovie(movi)" class="btn btn-primary">Update</button>
+        </p>
+        <table class="table">
+            <tbody>
+                <tr ng-repeat=" movi in moviList">
+                    <td><img src="{{movi.moviPoster}}" height="120px" width="120px" /> </td>
+                    <td>{{movi.moviTitle}}</td>
+                    <td>{{movi.moviGenre}}</td>
+                    <td>
+                        <button ng-click="removeMovie(movi)" class="btn btn-danger">Remove</button>
+                    </td>
+                    <td>
+                        <button ng-click="editMovie(movi)" class="btn btn-primary">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Add City</p>
+    <p>
+        <input type="text" id="city" name="city" placeholder="Enter City Name" class="form-control" ng-model="city.city"> </p>
+    <p>
+        <button ng-click="addCity(city)" class="btn btn-primary">Add </button>
+        <button ng-click="updateCity(city)" class="btn btn-primary">Update</button>
+    </p>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td> City</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat=" city in cityList">
+                    <td>{{city.city}}</td>
+                    <td>
+                        <button ng-click="removeCity(city)" class="btn btn-danger">Remove</button>
+                    </td>
+                    <td>
+                        <button ng-click="editCity(city)" class="btn btn-primary">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Add Theatre</p>
+    <p>
+        <input type="text" id="title" name="title" placeholder="Enter Theatre Name" class="form-control" ng-model="theatre.title"> </p>
+         <p><select  id="city" name="city"  class="form-control" ng-model="theatre.city" >
+        <option ng-repeat="city in cityList" value="{{city.city}}">{{city.city}}</option>
+        </select></p>
+        <p> <input type="text" id="no_of_seat" name="no_of_seat" placeholder="Enter No of Seats" class="form-control" ng-model="theatre.no_of_seat"></p>
+        <p> <input type="text" id="amount" name="amount" placeholder="Enter Amount" class="form-control" ng-model="theatre.amount"></p>
+
+
+    <p>
+        <button ng-click="addTheatre(theatre)" class="btn btn-primary">Add </button>
+        <button ng-click="updateTheatre(theatre)" class="btn btn-primary">Update</button>
+    </p>
+<div class="table-responsive">
+    <table class="table">
+            <thead>
+             <tr>
+                <td> Name</td>
+                <td> City</td>
+                <td> Amount</td>
+                <td> Seats</td>
+               
+                <td>Action</td>
+             </tr>
+            </thead>
+            <tbody>
+               
+                <tr ng-repeat="theatre in theatreList | filter:test">
+                    <td>{{theatre.title}}</td>
+                    <td>{{theatre.city}}</td>
+                     <td>{{theatre.amount}}</td>
+                      <td>{{theatre.no_of_seat}}</td>
+                   
+                    <td>
+                        <button ng-click="removeTheatre(theatre)" class="btn btn-danger">Remove</button>
+                    </td>
+                    <td>
+                        <button ng-click="editTheatre(theatre)" class="btn btn-primary">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Add Show Timing</p>
+    <p>
+        
+        <p>  <input type="text" id="showtime" name="showtime" placeholder="Enter Show Time" class="form-control" ng-model="showtimes.showtime"></p>
+
+
+    <p>
+        <button ng-click="addShow(showtimes)" class="btn btn-primary">Add </button>
+        <button ng-click="updateShowtime(showtimes)" class="btn btn-primary">Update</button>
+    </p>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+             <tr>
+                <td>Timing</td>
+               
+                <td>Action</td>
+             </tr>
+            </thead>
+            <tbody>
+               
+                <tr ng-repeat=" showtimes in showtimeList | filter:test">
+                    <td>{{showtimes.showtime}}</td>
+                   
+
+
+                     <td>
+                        <button ng-click="removeShowtime(showtimes)" class="btn btn-danger">Remove</button>
+                    </td>
+                    <td>
+                        <button ng-click="editShowtime(showtimes)" class="btn btn-primary">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <p>Add Show Timing</p>
+    <p>
+        
+        <p>  <select id="asnmovi" name="asnmovi"  class="form-control" ng-model="asnmovies.asnmovi">
+      <option ng-repeat="movi in moviList" value="{{movi.moviTitle}}">{{movi.moviTitle}}</option>
+    </select></p>
+    <p><select id="asnmovicity" name="asnmovicity"  class="form-control" ng-model="asnmovies.asnmovicity" ng-change="getTheatreDetail();">
+      <option ng-repeat="city in cityList" value="{{city.city}}">{{city.city}}</option>
+    </select></p>
+
+   
+
+    <p><select id="asnmovitheatre" name="asnmovitheatre"  class="form-control" ng-model="asnmovies.asnmovitheatre" >
+      <option ng-repeat="atheatre in atheatreList" value="{{atheatre.title}}">{{atheatre.title}}</option>
+    </select></p>
+    <div class="col-md-6">
+         <input type="date" id="fromdate" name="fromdate" class="form-control" placeholder="From date" ng-model="asnmovies.fromdate">
+      </div>
+
+      <div class="col-md-6">
+         <input type="date" id="todate" name="todate" class="form-control" placeholder="To date" ng-model="asnmovies.todate">
+       </div>
+
+
+    <p>
+         <button ng-click="addAsnmovi(asnmovies)" class="btn btn-primary">Assign Movie</button>
+        <button ng-click="updateAsnmovi(asnmovies)" class="btn btn-primary">Update</button>
+    </p>
+
+<div class="table-responsive">  
+  >
+        <table class="table">
+            <thead>
+             <tr>
+                <td>Movie</td>
+                <td>Theatre</td>
+                <td>City</td>
+                <td>From date</td>
+                <td>To date</td>
+                <td>Action</td>
+             </tr>
+            </thead>
+            <tbody>
+               
+                <tr ng-repeat=" asnmovies in asnmoviesList | filter:test">
+                    <td>{{asnmovies.asnmovi}}</td>
+                    <td>{{asnmovies.asnmovitheatre}}</td>
+                    <td>{{asnmovies.asnmovicity}}</td>
+                    <td>{{asnmovies.fromdate}}</td>
+                    <td>{{asnmovies.todate}}</td>
+                    
+                 <td>
+                        <button ng-click="removeAsnmovi(asnmovies)" class="btn btn-danger">Remove</button>
+                    </td>
+                    <td>
+                        <button ng-click="editAsnmovi(asnmovies)" class="btn btn-primary">Edit</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <p>Assign Show Timing</p>
+    <p>
+        
+        <p>  <select id="asntime" name="asntime"  class="form-control" ng-model="asnshowtimes.asntime">
+         <option ng-repeat="showtimes in showtimeList" value="{{showtimes.showtime}}">{{showtimes.showtime}}</option>
+     </select></p>
+    <p>
+        <select id="asntheatre" name="asntheatre"  class="form-control" ng-model="asnshowtimes.asntheatre">
+            <option ng-repeat="theatre in theatreList" value="{{theatre.title}}">{{theatre.title}}</option>
+        </select>
+    </p>
+
+
+       <p> <button ng-click="addAsntime(asnshowtimes)" class="btn btn-primary">Assign </button>
+        <button ng-click="updateAsntime(asnshowtimes)" class="btn btn-primary">Update</button></p>
+
+        <div class="table-responsive">  
+  
+        <table class="table">
+            <thead>
+             <tr>
+                <td>Theatre</td>
+                <td>Timing</td>
+                <td>Action</td>
+             </tr>
+            </thead>
+            <tbody>
+               
+                <tr ng-repeat=" asnshowtimes in asnshowtimesList | filter:test">
+                    <td>{{asnshowtimes.asntheatre}}</td>
+                    <td>{{asnshowtimes.asntime}}</td>
+                   
+
+                     <td>
+                        <button ng-click="removeAsntime(asnshowtimes)" class="btn btn-danger">Remove</button>
+                    </td>
+                    <td>
+                        <button ng-click="editAsntime(asnshowtimes)" class="btn btn-primary">Edit</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
