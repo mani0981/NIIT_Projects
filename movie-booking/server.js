@@ -36,7 +36,7 @@ db.once('open', function() {
     console.log("Connected to DB");
 });
 
-var port = process.env.PORT || 3000; // set our port
+var port = process.env.PORT || 9999; // set our port
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // routes ==================================================

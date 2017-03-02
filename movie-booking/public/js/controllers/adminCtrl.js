@@ -54,6 +54,7 @@ movieBookingApp.controller('adminController', function($scope, $http) {
     refresh();
 
 //Movie
+   
     $scope.addMovie = function(movi) {
         $http.get(`http://www.omdbapi.com/?t=${movi.moviTitle}&plot=short&r=json`).success(function(response) {
             console.log(response);
@@ -223,65 +224,6 @@ movieBookingApp.controller('adminController', function($scope, $http) {
     };
     
 
-    //Assign Movie
-
-     $scope.addAsnmovi = function (asnmovies) {
-         
-         var ft = $('#fromdate').val();
-         var tt = $('#todate').val();
-         
-         ft=moment(ft).format('L');
-         tt=moment(tt).format('L');
-         
-         $scope.asnmovies.fromdate=ft;
-         $scope.asnmovies.todate=tt;
-         
-                 $http.post('/assignmovie/addAsnmovi', asnmovies).success(function (response) {
-                                
-                                console.log(response);
-                                console.log("CREATE IS SUCCESSFUL");
-                                refresh();
-                            });
-       
-    };
-
-    $scope.removeAsnmovi = function (asnmovies) {
-       var confm = confirm("Are you sure you want to delete this Assign Movie?");
-      if (cofm == true) {
-        $http.delete('/assignmovie/removeAsnmovi/' + asnmovies._id).success(function (response) {
-            console.log(response);
-            console.log('DELETED SUCCESSFULLY');
-            refresh();
-        });
-      }
-    };
-
-    $scope.editAsnmovi = function (asnmovies) {
-        
-         $http.get('/assignmovie/editAsnmovi/' + asnmovies._id).success(function (response) {
-            $scope.asnmovies = response[0];
-        });
-    };
-
-    $scope.updateAsnmovi = function () {
-        console.log("REACHED UPDATE");
-
-        $http.put('/assignmovie/updateAsnmovi/' + $scope.asnmovies._id, $scope.asnmovies).success(function (response) {
-            console.log(response);
-            refresh();
-        })
-    };
-    
-    
-    $scope.getTheatreDetail = function () {
-        
-         $http.get('/theatre/getByCity/' + $scope.asnmovies.asnmovicity).success(function (response) {
-             console.log(response);
-             $scope.atheatreList = response;
-
-        });
-    };
-
 
     //Assing show time
      $scope.addAsntime = function (asnshowtimes) {
@@ -323,6 +265,65 @@ movieBookingApp.controller('adminController', function($scope, $http) {
     };
 
 
+    
+     //assign movie
+
+     $scope.addAsnmovi = function (asnmovies) {
+         
+         var ft = $('#fromdate').val();
+         var tt = $('#todate').val();
+         
+         ft=moment(ft).format('L');
+         tt=moment(tt).format('L');
+         
+         $scope.asnmovies.fromdate=ft;
+         $scope.asnmovies.todate=tt;
+         
+                 $http.post('/assignmovie/addAsnmovi', asnmovies).success(function (response) {
+                                
+                                console.log(response);
+                                console.log("CREATE IS SUCCESSFUL");
+                                refresh();
+                            });
+       
+    };
+
+    $scope.removeAsnmovi = function (asnmovies) {
+       var r = confirm("Are you sure you want to delete this Assign Movie?");
+      if (r == true) {
+        $http.delete('/assignmovie/removeAsnmovi/' + asnmovies._id).success(function (response) {
+            console.log(response);
+            console.log('DELETED SUCCESSFULLY');
+            refresh();
+        });
+      }
+    };
+
+    $scope.editAsnmovi = function (asnmovies) {
+        
+         $http.get('/assignmovie/editAsnmovi/' + asnmovies._id).success(function (response) {
+            $scope.asnmovies = response[0];
+        });
+    };
+
+    $scope.updateAsnmovi = function () {
+        console.log("REACHED UPDATE");
+
+        $http.put('/assignmovie/updateAsnmovi/' + $scope.asnmovies._id, $scope.asnmovies).success(function (response) {
+            console.log(response);
+            refresh();
+        })
+    };
+    
+    
+    $scope.getTheatreDetail = function () {
+        
+         $http.get('/theatre/getByCity/' + $scope.asnmovies.asnmovicity).success(function (response) {
+             console.log(response);
+             $scope.atheatreList = response;
+
+        });
+    };
     
 
 });

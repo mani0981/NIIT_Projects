@@ -4,9 +4,9 @@
 	<p>{{ tagline }}</p>
     
     <div class="row">
-      <div class="col-sm-6 col-md-4" style="max-height:600px" ng-repeat=" movi in moviList">
+      <div class="col-sm-6 col-md-4" ng-repeat=" movi in moviList">
         <div class="thumbnail">
-          <img src="{{movi.moviPoster}}" />
+          <img src="{{movi.moviPoster}}" style="width:150px" />
           <div class="caption">
             <h3>{{movi.moviTitle}}</h3>
 
