@@ -1,6 +1,8 @@
 movieBookingApp.controller('adminController', function($scope, $http) {
 
 	$scope.tagline = 'Welcome to Admin!';	
+	$scope.errorMessage = false;
+	$scope.successMessage = false;
     
 
 
@@ -76,8 +78,17 @@ movieBookingApp.controller('adminController', function($scope, $http) {
                 .then(function(response) {
                     console.log(response);
                     console.log("CREATE IS SUCCESSFUL");
-                    refresh();
-                });
+					$scope.smsg = response.data.moviTitle + " added successfully.";
+                    $scope.successMessage = true;
+					refresh();
+                },function(err){
+					console.log($scope.msg);
+					$scope.msg = err.data.op.moviTitle + " already in the list";
+					$scope.errorMessage = true;
+					//$scope.$apply();
+					
+				
+				});
 
 
             
@@ -85,6 +96,14 @@ movieBookingApp.controller('adminController', function($scope, $http) {
         });
        
     };
+	
+	$scope.clearErrorMessage = function () {
+	console.log('Inside method');
+	$scope.errorMessage = false;
+	$scope.successMessage = false;
+	};
+	
+
 
     $scope.removeMovie = function(movie) {
         //console.log(id);

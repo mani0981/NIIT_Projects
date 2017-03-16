@@ -126,3 +126,8 @@ body { margin: 0; }
   transition: none;
 }
 }
+
+.container{    background: white;
+    box-shadow: 2px 4px 10px darkgrey;
+}
+.navbar-default{ background:none !important; border:0px !important;}

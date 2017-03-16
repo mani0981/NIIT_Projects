@@ -51,6 +51,17 @@
 
 <div class="col-md-12">
 <div class="row">
+
+
+<div class="alert alert-warning" ng-show="errorMessage">
+    <a href="#" class="close" ng-click="clearErrorMessage()" >&times;</a>
+    <strong>Warning!</strong> {{msg}}.
+</div>
+<div class="alert alert-success fade in"  ng-show="successMessage">
+    <a href="#" class="close"  ng-click="clearErrorMessage()">&times;</a>
+    <strong>Success!</strong> {{smsg}}.
+</div>
+
 <div class="table-responsive">  
   <p class="search-movie"><input type="text" placeholder="Search Movie" class="form-control" ng-model="test"></p>
         <table class="table">
@@ -77,8 +88,8 @@
                     <td>{{movi.moviLanguage}}</td>
                     <td>{{movi.moviGenre}}</td>
                     <td style="width:7%">
-                        <button ng-click="editMovie(movi)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                        <button ng-click="removeMovie(movi)" title="Delete" class="btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                       <!-- <button ng-click="editMovie(movi)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>-->
+                        <button ng-click="removeMovie(movi)" title="Delete" class="btn-xs btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -139,8 +150,8 @@
                     
                    
                     <td style="width:7%">
-                        <button ng-click="editCity(city)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                        <button ng-click="removeCity(city)" title="Delete" class="btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                       <!-- <button ng-click="editCity(city)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>-->
+                        <button ng-click="removeCity(city)" title="Delete" class="btn-xs btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -231,8 +242,8 @@
                       <td>{{theatre.no_of_seat}}</td>
                    
                     <td style="width:7%">
-                        <button ng-click="editTheatre(theatre)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                        <button ng-click="removeTheatre(theatre)" title="Delete" class="btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                        <!--<button ng-click="editTheatre(theatre)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>-->
+                        <button ng-click="removeTheatre(theatre)" title="Delete" class="btn-xs btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -289,8 +300,8 @@
                 <tr ng-repeat=" showtimes in showtimeList | filter:test">
                     <td>{{showtimes.showtime}}</td>
                     <td style="width:7%">
-                        <button ng-click="editShowtime(showtimes)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                        <button ng-click="removeShowtime(showtimes)" title="Delete" class="btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                       <!-- <button ng-click="editShowtime(showtimes)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>-->
+                        <button ng-click="removeShowtime(showtimes)" title="Delete" class="btn-xs btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -359,8 +370,8 @@
                     <td>{{asnshowtimes.asntheatre}}</td>
                     <td>{{asnshowtimes.asntime}}</td>
                     <td style="width:7%">
-                        <button ng-click="editAsntime(asnshowtimes)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                        <button ng-click="removeAsntime(asnshowtimes)" title="Delete" class="btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                        <!--<button ng-click="editAsntime(asnshowtimes)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>-->
+                        <button ng-click="removeAsntime(asnshowtimes)" title="Delete" class="btn-xs btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -468,8 +479,8 @@
                     <td>{{asnmovies.fromdate}}</td>
                     <td>{{asnmovies.todate}}</td>
                     <td style="width:7%">
-                        <button ng-click="editAsnmovi(asnmovies)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
-                        <button ng-click="removeAsnmovi(asnmovies)" title="Delete" class="btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>
+                        <!--<button ng-click="editAsnmovi(asnmovies)" title="Edit" class="btn-xs btn-primary"><i class="fa fa-pencil"></i></button>-->
+                        <button ng-click="removeAsnmovi(asnmovies)" title="Delete" class="btn-xs btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>

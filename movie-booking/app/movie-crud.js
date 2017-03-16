@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 var movieSchema = mongoose.Schema({
  
-  moviTitle: String,
+  moviTitle: {type : String , unique : true},
   moviLanguage: String,
   moviGenre: String,
   moviPoster: String,
@@ -65,7 +65,11 @@ router.post('/addMovie', function(req, res){
   });
 
   movie.save(function(err, docs){
-    if ( err ) throw err;
+    if ( err ){
+		res.status(400).json(err);
+		 console.log('______________________________', err);
+		return;	 
+	}
     console.log("Book Saved Successfully");
     res.json(docs);
   });
