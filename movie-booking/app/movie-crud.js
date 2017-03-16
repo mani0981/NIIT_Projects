@@ -12,7 +12,9 @@ var movieSchema = mongoose.Schema({
   moviGenre: String,
   moviPoster: String,
   moviDirector: String,
-  moviActors: String
+  moviPlot:String,
+  moviActors: String,
+  
  });
 var Movie = mongoose.model('Movie', movieSchema, 'movie');
 
@@ -45,7 +47,9 @@ router.post('/addMovie', function(req, res){
   var genre = req.body.Genre;
   var poster = req.body.Poster;
   var director = req.body.Director;
+  var plot = req.body.Plot;
   var actors = req.body.Actors;
+  
 
   var movie = new Movie({
    
@@ -54,7 +58,9 @@ router.post('/addMovie', function(req, res){
     moviGenre: genre,
     moviPoster: poster,
     moviDirector: director,
-    moviActors: actors
+    moviPlot: plot,
+    moviActors: actors,
+    
    
   });
 

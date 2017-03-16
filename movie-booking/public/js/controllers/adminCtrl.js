@@ -60,7 +60,7 @@ movieBookingApp.controller('adminController', function($scope, $http) {
             console.log(response);
             var movieObj = {};
             for (var key in response) {
-                if (key == 'Title' || key == 'Language' || key == 'Poster' || key == 'Genre' || key == 'Director' || key == 'Actors') {
+                if (key == 'Title' || key == 'Language' || key == 'Poster' || key == 'Genre' || key == 'Director' || key == 'Actors' || key == 'Plot') {
                     movieObj[key] = response[key];
 
                 }
@@ -268,6 +268,7 @@ movieBookingApp.controller('adminController', function($scope, $http) {
     
      //assign movie
 
+     
      $scope.addAsnmovi = function (asnmovies) {
          
          var ft = $('#fromdate').val();
