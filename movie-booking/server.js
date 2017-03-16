@@ -27,7 +27,7 @@ app.use('/assignshowtime', assignshowtimes);
 
 var mongo = require('mongodb');
 
-var dbHost = 'mongodb://localhost:27017/test';
+var dbHost = 'mongodb://localhost:8080/test';
 mongoose.connect(dbHost);
 
 var db = mongoose.connection;
