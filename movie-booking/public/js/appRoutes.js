@@ -18,6 +18,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		.when('/admin', {
 			templateUrl: 'views/admin.html',
 			controller: 'adminController'
+		})
+
+		// Booking Page
+		.when('/booking', {
+			templateUrl: 'views/booking.html',
+			controller: 'BookController'
 		});
 
 		

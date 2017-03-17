@@ -9,7 +9,7 @@ h1 {
 
 .accordion {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1170px;
   height: 350px;
   overflow: hidden;
   margin: 50px auto;
@@ -127,7 +127,38 @@ body { margin: 0; }
 }
 }
 
-.container{    background: white;
+.container  {    background: white;
     box-shadow: 2px 4px 10px darkgrey;
+    
 }
+.container.movieBlock{ padding-top: 20px;}
 .navbar-default{ background:none !important; border:0px !important;}
+
+.thumbnail{border-radius: 0px; height: 181px; padding: 0px;}
+
+.thumbnail > img {
+    float: left;
+    margin-right: 9px;
+    width: 120px;
+    height: 180px;
+}
+
+.thumbnail h3 {
+
+  margin-top: 0px;
+  
+}
+
+.thumbnail > .caption {
+    padding: 4px;
+    display: inline-block;
+
+}
+
+.thumbnail > .caption > .actor{  
+  
+
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; }

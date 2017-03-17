@@ -1,6 +1,6 @@
 movieBookingApp.controller('mainController', function($scope, $http) {
 
-	$scope.tagline = 'Welcome to movie booking website!';	
+	
 	
 	$scope.moviList = [];
     

@@ -12,24 +12,31 @@
   </ul>
 </div>
 
-<div class=" text-center">
-	<h1>Movie Booking Website</h1>
-
-	<p>{{ tagline }}</p>
-    
+<div class=" container movieBlock" >
+	
+   
     <div class="row">
-      <div class="col-sm-6 col-md-4" style="max-height:600px" ng-repeat=" movi in moviList">
+
+       
+
+ <p class="search-movie"><input type="text" placeholder="Search Movie"  ng-model="test"></p>
+
+
+
+      <div class="col-sm-6 col-md-4"  ng-repeat=" movi in moviList | filter:test">
         <div class="thumbnail">
           <img src="{{movi.moviPoster}}" />
-          <div class="caption">
-            <h3>{{movi.moviTitle}}</h3>
+          <div class="caption col-lg-7">
+            <h3 >{{movi.moviTitle}}</h3>
 
             <p>{{movi.moviGenre}}</p>
-            <p>{{movi.moviActors}}</p>
-            <p>{{movi.moviPlot}}</p>
-
+            <p class="actor">{{movi.moviActors}}</p>
             
+ 
+
+            <a type="button" href="/booking" ng-click="bookTickets(movi)" class="link-text">BOOK NOW</a>
           </div>
+          <div style="clear:both"></div>
         </div>
       </div>
     </div>
